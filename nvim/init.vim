@@ -31,12 +31,13 @@ call plug#begin()
     Plug 'akinsho/bufferline.nvim'
     Plug 'nvim-lualine/lualine.nvim'
     "themes
-    Plug 'ray-x/starry.nvim'
     Plug 'rose-pine/neovim'
     Plug 'sainnhe/edge'
     Plug 'joshdick/onedark.vim'
     Plug 'folke/tokyonight.nvim'
     Plug 'xolox/vim-colorscheme-switcher'
+    Plug 'shaunsingh/moonlight.nvim'
+    Plug 'catppuccin/nvim' 
     "telescope, file explorer, treesitter and a floating terminal cuz why not?
     Plug 'kyazdani42/nvim-web-devicons'
     Plug 'kyazdani42/nvim-tree.lua'
@@ -76,4 +77,5 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_task<cr>
 
-colo rose-pine
+
+colorscheme catppuccin
