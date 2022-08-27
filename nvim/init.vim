@@ -47,6 +47,7 @@ call plug#begin()
     Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
     "lsp
     Plug 'neovim/nvim-lspconfig'
+    Plug 'williamboman/mason.nvim'
     
     "autocompletion
     Plug 'hrsh7th/nvim-cmp'
