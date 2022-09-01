@@ -1,4 +1,7 @@
+require('abhinav.mason.init')
+require('abhinav.mason-lsp.init')
 require('abhinav.lspconfig')
+require('abhinav.cmp.init')
 require('abhinav.nvim-tree-config.init')
 require('abhinav.treesitter-config.init')
 require('abhinav.whichkey-config.init')
@@ -10,3 +13,4 @@ require('abhinav.lualine.init')
 require('abhinav.telescope-config.init')
 require('abhinav.moonlight.init')
 require('abhinav.catppuccin.init')
+
