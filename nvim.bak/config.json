@@ -1,0 +1,12 @@
+{
+  // Use the official ChromaDB integration for Google's Generative AI services.
+  "embedding_function": "GoogleGenerativeAiEmbeddingFunction",
+
+  "embedding_params": {
+    // Specify the exact embedding model name for the Gemini API.
+    "model_name": "models/embedding-001",
+
+    // The API key is automatically read from the GOOGLE_API_KEY environment variable.
+    // You don't need to put your key in this file.
+  }
+}

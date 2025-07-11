@@ -1,0 +1,36 @@
+
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "name": "Neovim Configuration Workspace",
+  "version": "1.0.0",
+  "system_prompt": "You are assisting with a Neovim configuration project. Provide detailed and accurate responses based on the provided context.",
+  "groups": [
+    {
+      "name": "Core Configuration",
+      "system_prompt": "This group contains the core Neovim configuration file, which is the entry point for the setup.",
+      "data": ["init_lua"]
+    },
+    {
+      "name": "Plugin Management and Configuration",
+      "system_prompt": "This group contains all files related to plugin management and configuration, including Lazy.nvim setup and individual plugin configurations.",
+      "data": ["config_folder", "plugins_folder"]
+    }
+  ],
+  "data": {
+    "init_lua": {
+      "type": "file",
+      "path": "nvim/init.lua",
+      "description": "The main Neovim configuration file."
+    },
+    "config_folder": {
+      "type": "file",
+      "path": "nvim/lua/config/",
+      "description": "Folder containing Lazy.nvim setup and other plugin configuration files."
+    },
+    "plugins_folder": {
+      "type": "file",
+      "path": "nvim/lua/plugins/",
+      "description": "Folder containing plugin installation and configuration files."
+    }
+  }
+}

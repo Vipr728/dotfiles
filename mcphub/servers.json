@@ -1,0 +1,29 @@
+{
+  "mcpServers": {
+    "context7": {
+      "autoApprove": [
+        
+      ],
+      "command": "npx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp"
+      ],
+      "disabled": false
+    }
+  },
+  "nativeMCPServers": {
+    "mcphub": {
+      "autoApprove": [
+        
+      ],
+      "disabled": false
+    },
+    "neovim": {
+      "autoApprove": [
+        
+      ],
+      "disabled": false
+    }
+  }
+}
