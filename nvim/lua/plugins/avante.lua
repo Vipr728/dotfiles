@@ -1,9 +1,6 @@
 return {
 	"yetone/avante.nvim",
-	-- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-	-- ⚠️ must add this setting! ! !
 	build = function()
-		-- conditionally use the correct build system for the current OS
 		if vim.fn.has("win32") == 1 then
 			return "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
 		else
@@ -11,32 +8,26 @@ return {
 		end
 	end,
 	event = "VeryLazy",
-	version = false, -- Never set this value to "*"! Never!
+	version = false,
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"MunifTanjim/nui.nvim",
-		--- The below dependencies are optional,
-		"echasnovski/mini.pick",   -- for file_selector provider mini.pick
-		"nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-		"hrsh7th/nvim-cmp",        -- autocompletion for avante commands and mentions
-		"ibhagwan/fzf-lua",        -- for file_selector provider fzf
-		"stevearc/dressing.nvim",  -- for input provider dressing
-		"folke/snacks.nvim",       -- for input provider snacks
-		"nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-		"zbirenbaum/copilot.lua",  -- for providers='copilot'
+		"echasnovski/mini.pick",
+		"nvim-telescope/telescope.nvim",
+		"hrsh7th/nvim-cmp",
+		"ibhagwan/fzf-lua",
+		"stevearc/dressing.nvim",
+		"folke/snacks.nvim",
+		"nvim-tree/nvim-web-devicons",
+		"zbirenbaum/copilot.lua",
 		{
-			-- support for image pasting
 			"HakonHarnes/img-clip.nvim",
 			event = "VeryLazy",
 			opts = {
-				-- recommended settings
 				default = {
 					embed_image_as_base64 = false,
 					prompt_for_file_name = false,
-					drag_and_drop = {
-						insert_mode = true,
-					},
-					-- required for Windows users
+					drag_and_drop = { insert_mode = true },
 					use_absolute_path = true,
 				},
 			},
@@ -44,20 +35,31 @@ return {
 	},
 	config = function()
 		require("avante").setup({
+			windows = {
+				position = "left",
+				width = 35,
+			},
 			provider = "copilot",
-			providers = {},
-
+			providers = {
+				claude = {
+					endpoint = "https://api.anthropic.com",
+					model = "claude-sonnet-4-20250514",
+					api_key_name = "ANTHROPIC_API_KEY",
+				},
+			},
 			system_prompt = function()
-				local hub = require("mcphub").get_hub_instance()
-				return hub and hub:get_active_servers_prompt() or ""
+				local ok, hub = pcall(function()
+					return require("mcphub").get_hub_instance()
+				end)
+				return ok and hub and hub:get_active_servers_prompt() or ""
 			end,
-			-- Using function prevents requiring mcphub before it's loaded
 			custom_tools = function()
-				return {
-					require("mcphub.extensions.avante").mcp_tool(),
-				}
+				local ok, ext = pcall(require, "mcphub.extensions.avante")
+				if ok then
+					return { ext.mcp_tool() }
+				end
+				return {}
 			end,
 		})
-	end
-
+	end,
 }

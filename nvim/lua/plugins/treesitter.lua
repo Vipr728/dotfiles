@@ -1,55 +1,44 @@
-return { {
-	'nvim-treesitter/nvim-treesitter',
-	event = { "BufReadPre", "BufNewFile" },
-	build = ":TSUpdate",
-	config = function()
-		local configs = require("nvim-treesitter.configs")
-		configs.setup({
-			highlight = {
-				enable = true,
-			},
+return {
+	{
+		"nvim-treesitter/nvim-treesitter",
+		event = { "BufReadPre", "BufNewFile" },
+		build = ":TSUpdate",
+		main = "nvim-treesitter",
+		opts = {
+			highlight = { enable = true },
 			indent = { enable = true },
-			autotage = { enable = true },
 			ensure_installed = {
 				"lua",
 				"typescript",
-				"php",
-				"tsx"
+				"tsx",
+				"javascript",
+				"html",
+				"css",
+				"json",
+				"yaml",
+				"markdown",
+				"python",
+				"go",
+				"bash",
+				"vim",
+				"vimdoc",
+				"rust",
+				"toml",
+				"latex",
+				"regex",
 			},
-			auto_install = false,
-			incremental_selection = {
-				enable = true,
-				keymaps = {
-					init_selection = "gnn", -- set to `false` to disable one of the mappings
-					node_incremental = "grn",
-					scope_incremental = "grc",
-					node_decremental = "grm",
-				},
-			}
-		})
-	end
-
-},
+			auto_install = true,
+		},
+	},
 	{
 		"windwp/nvim-ts-autotag",
 		ft = { "html", "xml", "javascript", "typescript", "javascriptreact", "typescriptreact", "svelte" },
-		config = function()
-			-- Independent nvim-ts-autotag setup
-			require("nvim-ts-autotag").setup({
-				opts = {
-					enable_close = true,           -- Auto-close tags
-					enable_rename = true,          -- Auto-rename pairs
-					enable_close_on_slash = false, -- Disable auto-close on trailing `</`
-				},
-				per_filetype = {
-					["html"] = {
-						enable_close = true, -- Disable auto-closing for HTML
-					},
-					["typescriptreact"] = {
-						enable_close = true, -- Explicitly enable auto-closing (optional, defaults to `true`)
-					},
-				},
-			})
-		end,
+		opts = {
+			opts = {
+				enable_close = true,
+				enable_rename = true,
+				enable_close_on_slash = false,
+			},
+		},
 	},
 }

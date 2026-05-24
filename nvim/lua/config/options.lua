@@ -1,3 +1,10 @@
+vim.env.PATH = vim.env.HOME .. "/.cargo/bin:/opt/homebrew/bin:" .. vim.env.PATH
+
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_ruby_provider = 0
+
 vim.cmd("let g:netrw_banner = 0")
 vim.opt.number = true
 vim.opt.cursorline = true
@@ -19,7 +26,7 @@ vim.opt.termguicolors = true
 vim.opt.background = "dark"
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
-vim.opt.backspace = {"start", "eol", "indent" }
+vim.opt.backspace = { "start", "eol", "indent" }
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.updatetime = 50
@@ -28,9 +35,15 @@ vim.opt.clipboard:append("unnamedplus")
 vim.opt.hlsearch = true
 vim.opt.mouse = "a"
 vim.g.editorconfig = true
-
-
-
-
-
-
+vim.opt.sessionoptions = {
+	"blank",
+	"buffers",
+	"curdir",
+	"folds",
+	"help",
+	"tabpages",
+	"winsize",
+	"winpos",
+	"terminal",
+	"localoptions",
+}
